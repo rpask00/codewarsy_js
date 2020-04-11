@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: #123;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <script>
+        function race(v1, v2, g) {
+
+            g = g / (v2 - v1);
+            return v2 - v1 > 0 ? [Math.floor(g), Math.floor(g * 60 % 60), Math.floor(g * 3600 % 60)] : null;
+        }
+    </script>
+</body>
+
+</html>

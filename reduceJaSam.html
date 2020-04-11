@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: #123;
+            display:
+        }
+    </style>
+</head>
+
+<body>
+
+    <div></div>
+    <div></div>
+    <div></div>
+
+    <script>
+        function cos(arek) {
+            for (let i = 1; i < arek.length-1; i++) {
+                if (arek.slice(0, i).reduce((ac, cu) => ac + cu)===arek.slice(i+1).reduce((ac, cu) => ac + cu)) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+    </script>
+</body>
+
+</html>

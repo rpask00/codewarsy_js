@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: #123;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <script>
+        function alphabetPosition(text) {
+            // text=text.replace(/[^a-z]/g,'');
+            text=text.replace(/[^a-z]/g,'').replace(/[a-z]/gi, l=>l.toLowerCase().charCodeAt(0)-96+' ').split('');
+            text.pop();
+            return text.join('');
+        }
+    </script>
+</body>
+
+</html>

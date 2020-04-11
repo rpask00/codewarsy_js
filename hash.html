@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: #123;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <script>
+        function generateHashtag(str) {
+            str=str.replace(/  /,' ');
+
+            str=str.replace(/  /gm,'');
+            if (str.trim().length > 140||str==='') return false;
+            str=str.split(' ');
+            str.forEach((e, i) => str[i]=e.replace(e[0], e[0].toUpperCase()));
+            return '#'+str.join('');
+
+        }
+    </script>
+</body>
+
+</html>

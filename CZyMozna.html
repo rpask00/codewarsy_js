@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: #123;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <script>
+        function isMerge(s, part1, part2) {
+            console.log(s);
+            console.log(part1);
+            console.log(part2);
+            part1 = part1.split('');
+            part2 = part2.split('');
+            x=true;
+
+            if(part1.length+part2.length!=s.length)return false;
+
+            s.split('').forEach(ltr => {
+                if(ltr==part1[0]){
+                    part1.shift();
+                    
+                }else if(ltr==part2[0]){
+                    part2.shift();
+
+                }else{
+                    x=false;
+                }
+            })
+
+            // for(let i = 0; i<s.length; i++){
+            //     if(part1[0]==part2[0]&&part1[0]==s[i]){
+            //         part1.shift();
+            //     }else if(part1[0]==s[i]){
+            //         part1.shift();
+            //     }else if(part2[0]==s[i]){
+            //         part2.shift();
+            //     }
+
+            // }
+
+            return x;
+
+        }
+
+        
+    </script>
+</body>
+
+</html>

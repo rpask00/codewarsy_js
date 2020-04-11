@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: #123;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <script>
+        let RomanNumerals = {
+            fromRoman(lb) {
+                lb = lb.split('');
+                lb = lb.map(e => {
+                    switch (e) {
+                        case 'M':
+                            return 1000;
+                            break;
+                        case 'D':
+                            return 500;
+
+                        case 'C':
+                            return 100;
+
+                            break;
+                        case 'L':
+                            return 50;
+
+                        case 'X':
+                            return 10;
+
+                            break;
+                        case 'V':
+                            return 5;
+
+                            break;
+                        case 'I':
+                            return 1;
+
+                    }
+                });
+
+                console.log(lb);
+                let tak = [];
+
+                lb.reduce((acu, cur, idx) => {
+                    acu < cur ? tak.push(idx) : null;
+                    return cur;
+                })
+
+                lb.forEach((e, i) => {
+                    if (tak.indexOf(i) != -1) {
+                        lb[i] = e - lb[i - 1];
+                        lb[i - 1] = 0;
+                    }
+                })
+                return lb.reduce((a, c) => a + c);
+            },
+
+            toRoman(lb) {
+                let ef = [];
+                while (lb >= 1000) {
+                    lb -= 1000;
+                    ef.push('M');
+                }
+
+                while (lb >= 900) {
+                    lb -= 900;
+                    ef.push('CM');
+                }
+
+                while (lb >= 500) {
+                    lb -= 500;
+                    ef.push('D');
+                }
+
+                while (lb >= 400) {
+                    lb -= 400;
+                    ef.push('CD');
+                }
+
+                while (lb >= 100) {
+                    lb -= 100;
+                    ef.push('C');
+                }
+
+                while (lb >= 90) {
+                    lb -= 90;
+                    ef.push('XC');
+                }
+
+                while (lb >= 50) {
+                    lb -= 50;
+                    ef.push('L');
+                }
+
+                while (lb >= 40) {
+                    lb -= 40;
+                    ef.push('XV');
+                }
+
+                while (lb >= 10) {
+                    lb -= 10;
+                    ef.push('X');
+                }
+
+                while (lb >= 9) {
+                    lb -= 9;
+                    ef.push('IX');
+                }
+
+                while (lb >= 5) {
+                    lb -= 5;
+                    ef.push('V');
+                }
+
+                while (lb >= 4) {
+                    lb -= 4;
+                    ef.push('IV');
+                }
+
+                while (lb >= 1) {
+                    lb -= 1;
+                    ef.push('I');
+                }
+
+
+                return ef.join('');
+            }
+        }
+    </script>
+</body>
+
+</html>

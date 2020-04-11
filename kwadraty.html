@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: #123;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <script>
+        function perimeter(n) {
+            let square = [1, 1];
+            for (n; n > 1; n--)
+                square.push(square.slice(square.length - 2).reduce((ac, cu) => ac + cu))
+            
+            return square.reduce((ac, cu) => ac + cu * 4, 0);
+        }
+    </script>
+</body>
+
+</html>

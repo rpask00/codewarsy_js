@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: #123;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <script>
+        function findEvenIndex(arr) {
+
+            let dl = arr.length;
+            let beg = [];
+            let b = 0
+            let e = 0
+            let end = [];
+            let czy = -1;
+
+            for (i = 0; i < arr.length; i++) {
+                dl--;
+
+                b += arr[i];
+                e += arr[dl];
+                beg.push(b);
+                end.push(e);
+
+            }
+
+                b=-1;
+
+            end = end.reverse();
+
+            let x = 0;
+            while (x + 2 <= end.length-1) {
+
+                beg[x] == end[x + 2] ? czy = x + 1 : czy = -1;
+                czy != -1 ? b = czy : null;
+
+                end[x-2] == beg[x] ? czy = x - 1 : czy = -1;
+                czy != -1 ? b = czy : null;
+
+                x++
+            }
+            
+            return b;
+
+
+
+        }
+    </script>
+</body>
+
+</html>

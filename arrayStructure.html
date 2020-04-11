@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: #123;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <script>
+        Array.prototype.sameStructureAs = function (other) {
+            
+            let y = JSON.stringify(other).replace(/("\]")|("\[")/g, '');
+            let t = JSON.stringify(this).replace(/("\]")|("\[")/g, '');
+            return t.replace(/[^\[\],]/g, '') == y.replace(/[^\[\],]/g, '')?true:false;
+
+
+        };
+    </script>
+</body>
+
+</html>

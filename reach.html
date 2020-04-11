@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: #123;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <script>
+        function solve_graph(start, end, arcs) {
+            start = start.charCodeAt(0) - 96;
+            end = end.charCodeAt(0) - 96;
+            arcs = arcs.map(e => {
+                    let q = [];
+                    q.push(e.start.charCodeAt(0) - 96);
+                    q.push(e.end.charCodeAt(0) - 96)
+
+                    return q.join('');
+
+                }
+
+            );
+
+            if (arcs.indexOf("" + start + end) != -1) return true;
+            if (start == end) return true;
+            console.log(arcs);
+
+
+            arcs = arcs.reduce((box, cur, i) => {
+                if (box[box.length - 1] == cur[0]) return box + cur;
+                else return box;
+            })
+
+            console.log(arcs);
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: #123;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <script>
+        function cos(str, k) {
+
+            // if (k == 0) {
+            //     return '';
+            // } else if (k > str.length) {
+            //     return '';
+
+            // } else if (str.length == 0) {
+            //     return '';
+
+            // } else {
+            //     let efekt = [];
+            //     while (str.length >= k) {
+            //         efekt.push(str.slice(0, k))
+            //         str.shift();
+            //     }
+            //     let max = 0;
+            //     let index = 0;
+            //     efekt.forEach((tablica, i) => efekt[i] = efekt[i].join(''));
+            //     efekt.forEach((napis, i) => {
+            //         if (napis.length > max) {
+            //             max = napis.length;
+            //             index = i;
+
+            //         }
+            //     })
+            //     console.log(efekt[index]);
+            //     return efekt[index];
+            // }
+
+            if (k <= 0) {
+                return '';
+            } else if (k > str.length) {
+                return '';
+
+            } else if (str.length == 0) {
+                return '';
+            }
+            let min = 0;
+            let max = k;
+            var er = 0;
+            let done = min;
+
+            while (max <= str.length) {
+                let x = str.slice(min, max).reduce((acu, cur, idx, ) => {
+                    return acu += cur.length;
+                }, 0)
+                if (er < x) {
+                    er = x;
+                    done = min;
+                }
+
+                min++;
+                max++;
+            };
+
+            return str.slice(done, done + k).reduce((acu, cur, i) => {
+                return acu + cur;
+            });
+
+
+
+        }
+
+        cos(["zone", "abigail", "theta", "form", "libe", "zas"], 2);
+    </script>
+</body>
+
+</html>

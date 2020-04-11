@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: #123;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <script>
+        function rot13(msg) {
+          
+
+            return msg.replace(/[a-z]/gi, letter => String.fromCharCode(letter.charCodeAt(0) + (letter.toLowerCase() > 'm' ? -13 : 13)));
+        }
+
+        rot13('haaalo');
+    </script>
+</body>
+
+</html>

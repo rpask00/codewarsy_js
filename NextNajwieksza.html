@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: #123;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <script>
+        function nextBigger(n) {
+            let mur = n;
+            n = n + '';
+            n = n.split('').map(e => e * 1).sort((a, b) => a - b).reverse().join('') * 1;
+
+            if (mur == n)
+                return -1;
+
+            n = mur + "";
+            mur = mur + '';
+
+            let flaga = true;
+
+            while (flaga) {
+                flaga = false;
+                n = ++n + '';
+
+                n.split('').forEach(e => {
+                    if (!mur.includes(e)) {
+                        flaga = true;
+                    }
+                })
+
+                let reg = new RegExp('[' + n + ']', 'g')
+                let ifif= n.split('').sort().join('') == mur.split('').sort().join('') ;
+
+                if (mur.replace(reg, "")|| !ifif) flaga = true;
+
+            }
+            return n * 1;
+        }
+    </script>
+</body>
+
+</html>

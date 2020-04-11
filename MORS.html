@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: #123;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <script>
+        var decodeBits = function (bits) {
+            bits = bits.replace(/0/g, ' ').trim().replace(/ /g, '0');
+            bits = "0" + bits + "0";
+            let str = "010";
+            let lstr = "01110";
+            let x = true;
+            let y = true;
+            let i = 0;
+            let chg = ['0000000', '111', '1', '000', '0'];
+
+            if (bits.slice(1, bits.length - 1).includes("0")) {
+                while (x && y) {
+                    x = !bits.includes(str);
+                    y = !bits.includes(lstr);
+                    !y ? x = false : null;
+
+                    str = str.slice(0, str.length - 1) + "10";
+                    lstr = lstr.slice(0, lstr.length - 1) + "1110";
+                    i++;
+                }
+
+            } else {
+                i = bits.slice(1, bits.length - 1).length;
+            }
+            let c1 = new RegExp(chg[0].repeat(i), "g");
+            let c2 = new RegExp(chg[1].repeat(i), "g");
+            let c3 = new RegExp(chg[2].repeat(i), "g");
+            let c4 = new RegExp(chg[3].repeat(i), "g");
+            let c5 = new RegExp(chg[4], "g");
+            let c6 = new RegExp("0", "g");
+
+            return bits.replace(c1, '  ').replace(c2, '-').replace(c3, '.').replace(c4, ' ').replace(c5, '');
+        }
+        var decodeMorse = function (str) {
+            shifr = ['.-', '-...', '-.-.', '-..', '.', '..-.', '--.', '....', '..', '.---', '-.-', '.-..', '--',
+                '-.',
+                '---',
+                '.--.', '--.-', '.-.', '...', '-', '..-', '...-', '.--', '-..-', '-.--', '--..', '.----',
+                '..---',
+                '...--', '....-', '.....', '-....', '--..', '---..', '----.', '-----'
+            ];
+
+            unshif = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            let r = str.split(' ').map(e => e == "" ? " " : unshif[shifr.indexOf(e)]).join('');
+
+
+            return r.length > 40 ? r + '.' : r;
+        }
+    </script>
+</body>
+
+</html>

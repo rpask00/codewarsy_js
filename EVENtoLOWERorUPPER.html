@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: #123;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <script>
+        function cos(str) {
+            str = str.split("");
+            str.forEach((l, i) => {
+                if (i % 2 == 0) {
+                    str[i] = String.fromCharCode(l.charCodeAt(0) < 91 ? l.charCodeAt(0) + 32 : l.charCodeAt(0) -
+                        32);
+                }else{
+                    str[i] = String.fromCharCode(l.charCodeAt(0) < 91 ? l.charCodeAt(0) - 32 : l.charCodeAt(0) +
+                        32);
+                }
+            })
+            return str.join('');
+        }
+    </script>
+</body>
+
+</html>

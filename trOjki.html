@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: #123;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <script>
+        var recoverSecret = function (triplets) {
+            let td = triplets.map(e => e[0] + e[1] + ',' + e[1] + e[2]).join(',').split(',').join('').split('').reduce(
+                (ac, cu, i) => {
+
+                    if (ac.indexOf(cu) == -1) return ac + cu;
+                    else return ac;
+
+                })
+
+
+            td = td.split('');
+            let tak = 0;
+
+            while (tak < triplets.length) {
+
+                triplets.forEach(arr => {
+                    if (td.indexOf(arr[0]) < td.indexOf(arr[1]) && td.indexOf(arr[1]) < td.indexOf(arr[2])) {
+                        tak++;
+                    } else {
+                        let order = [td.indexOf(arr[0]), td.indexOf(arr[1]), td.indexOf(arr[2])].sort(
+                            function (a, b) {
+                                return a - b
+                            });
+                        td[order[0]] = arr[0];
+                        td[order[1]] = arr[1];
+                        td[order[2]] = arr[2];
+
+                        tak = 0;
+                    }
+
+                })
+                tak < triplets.length ? tak = 0 : null;
+
+            }
+            return td.join('');
+
+        }
+    </script>
+</body>
+
+</html>

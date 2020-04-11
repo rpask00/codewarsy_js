@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: #123;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <script>
+        function add(augend, addend) {
+            if (augend.length < addend.length) {
+                let buf = addend;
+                addend = augend;
+                augend = buf;
+
+            }
+
+
+
+            augend = augend.split('').reverse().map(e => e * 1);
+            addend = addend.split('').reverse().map(e => e * 1);
+
+            addend.forEach((e, i) => augend[i] += e);
+            augend.push(0);
+            augend.reduce((l, c, i) => {
+                augend[i - 1] = l % 10;
+                augend[i] += Math.floor(l / 10)
+
+                return augend[i];
+            })
+
+            console.log(augend);
+
+            augend = augend.reverse().join('');
+            return augend[0] == '0' ? augend.split('').slice(1).join('') : augend;
+        }
+
+        function subtract(minuend, subtrahend) {
+
+            if (minuend.length > 4) {
+
+                minuend = [minuend[0] * 1].concat(minuend.split('').map(e => e * 1).slice(1).map(e => e + 10));
+                minuend.forEach((e, i) => {
+                    if (i != minuend.length - 1) {
+                        minuend[i] -= 1;
+                    }
+
+                })
+
+                minuend.reverse();
+                subtrahend = subtrahend.split('').reverse().map(e => e * 1);
+
+
+                subtrahend.forEach((e, i) => minuend[i] -= e);
+
+                console.log(minuend);
+
+                minuend.reduce((l, c, i) => {
+                    minuend[i - 1] = l % 10;
+                    minuend[i] += Math.floor(l / 10)
+
+                    return minuend[i];
+                })
+
+
+                minuend = minuend.reverse().join('');
+                return minuend[0] == '0' ? minuend.split('').slice(1).join('') : minuend;
+            }
+
+            return minuend - subtrahend;
+
+        }
+
+
+        function multiply(x, y) {
+            x = x.split('');
+            y = y.split('').reverse();
+            const arr = [];
+
+            x.reverse().forEach((e, i) => {
+                arr.push([]);
+                y.forEach(o => {
+                    arr[i].push(o * e);
+                })
+
+
+            })
+
+            arr.forEach((arraj, j) => {
+                arraj.forEach((e, i) => {
+                    if (String(e).length > 1) {
+                        let l0 = e % 10;
+                        let l1 = Math.floor(e / 10)
+                        arr[j][i] = l0;
+                        arr[j][i + 1] == undefined ? arr[j][i + 1] = l1 : arr[j][i + 1] += l1 * 1;
+                    }
+                })
+                for (let ia = 0; ia < j; ia++) {
+                    arr[j].unshift(0);
+                }
+
+            })
+
+            console.log(arr);
+
+            arr.reverse();
+            let result = [];
+
+            arr.forEach(listwa => {
+                listwa.forEach((e, i) => {
+                    result[i] == undefined ? result[i] = e : result[i] += e;
+                })
+            })
+            result.forEach((e, i) => {
+                let l0 = e % 10;
+                let l1 = Math.floor(e / 10)
+                result[i] = l0 + '';
+                result[i + 1] == undefined ? result[i + 1] ? result[i + 1] = l1 + '' : null : result[i + 1] +=
+                    l1;
+            })
+
+            if (!result.replace(/0/g, ""))
+                return "0";
+            else
+                return result.reverse().join('');
+
+        }
+
+        function divide(dividend, divisor) {
+            
+        }
+    </script>
+</body>
+
+</html>

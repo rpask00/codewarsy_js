@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: #123;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+        function mix(s1, s2) {
+            console.log(s1);
+            console.log(s2);
+            s1 = s1.replace(/[^a-z]/g, "")
+            s2 = s2.replace(/[^a-z]/g, "")
+
+            let ef1 = [];
+            let ef2 = [];
+
+            ef1[25] = '';
+            ef2[25] = '';
+            s1.split('').forEach(e => e.charCodeAt(0) < 97 ? null : ef1[e.charCodeAt(0) - 97] === undefined ? ef1[e.charCodeAt(
+                0) - 97] = e : ef1[e.charCodeAt(0) - 97] += e);
+            s2.split('').forEach(e => e.charCodeAt(0) < 97 ? null : ef2[e.charCodeAt(0) - 97] === undefined ? ef2[e.charCodeAt(
+                0) - 97] = e : ef2[e.charCodeAt(0) - 97] += e);
+
+
+            ef1 = ef1.join(0).split(0);
+            ef2 = ef2.join(0).split(0);
+
+            let wynik = [];
+
+            for (i = 0; i < 26; i++) {
+                if (ef1[i] == ef2[i] && ef1[i] != '' && ef1[i] != undefined && ef1[i].length > 1) {
+                    wynik.push('=:' + ef1[i] + '/');
+
+                } else if (ef1[i] != undefined && ef1[i].length > ef2[i].length && ef1[i].length > 1) {
+                    wynik.push('1:' + ef1[i] + '/');
+
+                } else if (ef1[i] != undefined && ef2[i].length > ef1[i].length && ef2[i].length > 1) {
+                    wynik.push('2:' + ef2[i] + '/');
+
+                }
+            }
+
+            wynik = wynik.sort();
+            wynik = wynik.sort(function (a, b) {
+                return b.length - a.length;
+            })
+            return wynik.join('').slice(0, wynik.join('').length - 1);
+
+
+
+        }
+    </script>
+</body>
+
+</html>
